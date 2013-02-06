@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+	<s:Header></s:Header>
+	<s:Body>
+		<wsnt:Notify>
+			<wsnt:NotificationMessage>
+				<wsnt:Topic></wsnt:Topic>
+				<wsnt:ProducerReference>
+					<wsa:Address>http://www.alert-project.eu/kesi</wsa:Address>
+				</wsnt:ProducerReference>
+				<wsnt:Message>
+					<ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd">
+						<ns1:head>
+							<ns1:sender>KESI</ns1:sender>
+							<ns1:timestamp>10000</ns1:timestamp>
+							<ns1:sequencenumber>1</ns1:sequencenumber>
+						</ns1:head>
+						<ns1:payload>
+							<ns1:meta>
+								<ns1:startTime>10010</ns1:startTime>
+								<ns1:endTime>10010</ns1:endTime>
+								<!-- name of event -->
+								<ns1:eventName>ALERT.KESI.IssueNew</ns1:eventName>
+								<ns1:eventType>request</ns1:eventType>
+							</ns1:meta>
+							<ns1:eventData>
+								<s:issue>
+									<s:issueAssignedTo>
+										<s:email>juan.prieto@atosresearch.eu</s:email>
+										<s:name>Juan Luis Prieto</s:name>
+										<s:id>juan.prieto@atosresearch.eu</s:id>
+									</s:issueAssignedTo>
+									<s:issueComment>
+										<s:commentText>Notify the user when a command (any) dispatched to the SOA layer has finalised (successfully or not). 
+								 For instance, if the user request to deploy, undeploy, start, stop any application, upon command finalisation, the user must be notified, whatever results has been produced. 
+								 
+								 Additionally, notified the user that the command is being processed with an corresponding widget.</s:commentText>
+										<s:commentPerson>
+											<s:email>josep.oriol@bsc.es</s:email>
+											<s:name>None</s:name>
+											<s:id>josep.oriol@bsc.es</s:id>
+										</s:commentPerson>
+										<s:commentDate>2012-02-09 12:26:00.0</s:commentDate>
+									</s:issueComment>
+									<s:issueComputerSystem>
+										<s:computerSystemOS>All</s:computerSystemOS>
+										<s:computerSystemPlatform>All</s:computerSystemPlatform>
+									</s:issueComputerSystem>
+									<s:issueDateOpened>2012-02-09T12:26:00+01:00</s:issueDateOpened>
+									<s:issueDescription>Notify the user when a command (any) dispatched to the SOA layer has finalised (successfully or not)</s:issueDescription>
+									<s:issueTracker>
+										<s:issueTrackerType>bugzilla</s:issueTrackerType>
+										<s:issueTrackerURL>http://itforgebugzilla.atosresearch.eu/bugzilla/</s:issueTrackerURL>
+									</s:issueTracker>
+									<s:issueUrl>http://itforgebugzilla.atosresearch.eu/bugzilla/show_bug.cgi?id=556</s:issueUrl>
+									<s:issueMilestone>
+										<s:milestoneId>---</s:milestoneId>
+									</s:issueMilestone>
+									<s:issuePriority></s:issuePriority>
+									<s:issueProduct>
+										<s:productComponentId>DeploymentOptimizer</s:productComponentId>
+										<s:productId>alert_optimis</s:productId>
+										<s:productVersion>BranchY2</s:productVersion>
+									</s:issueProduct>
+									<s:issueAuthor>
+										<s:email>josep.oriol@bsc.es</s:email>
+										<s:name>None</s:name>
+										<s:id>josep.oriol@bsc.es</s:id>
+									</s:issueAuthor>
+									<s:issueResolution>None</s:issueResolution>
+									<s:issueSeverity>Major</s:issueSeverity>
+									<s:issueStatus>Verified</s:issueStatus>
+								</s:issue>
+							</ns1:eventData>
+						</ns1:payload>
+					</ns1:event>
+				</wsnt:Message>
+			</wsnt:NotificationMessage>
+		</wsnt:Notify>
+	</s:Body>
+</s:Envelope>

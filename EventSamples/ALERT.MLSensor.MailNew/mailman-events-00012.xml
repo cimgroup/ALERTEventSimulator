@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.MLSensor.MailNew</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/MLSensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>MLSensor</ns1:sender>
+              <ns1:timestamp>1348472809876</ns1:timestamp>
+              <ns1:sequencenumber>11</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1348472809876</ns1:startTime>
+                <ns1:endTime>1348472809878</ns1:endTime>
+                <ns1:eventName>ALERT.MLSensor.MailNew</ns1:eventName>
+                <ns1:eventId>11</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r1:message>
+                  <r1:from><![CDATA[jr.falleri at gmail.com (Jean-Remy Falleri)]]></r1:from>
+                  <r1:date>Thu, 05 Jan 2006 16:31:48 +0200</r1:date>
+                  <r1:subject><![CDATA[[Kde-hardware-devel] Solid Knowledge Base]]></r1:subject>
+                  <r1:content><![CDATA[What will be the underlying code that Solid will use to manipulate network 
+hardware?
+
+The reason I ask is because I'm currently working on creating a library based 
+on iproute2. This would give applications the ability to perform direct 
+operations on network hardware.
+
+My vision is a network daemon that unifies all aspects of network 
+configuration across desktops as well as distributions. This would eliminate 
+things like ifup/ifdown and even replace ip or ifconfig. The daemon would 
+also be able to store network profiles internally across reboots.
+
+The actual daemon part comes into play by using the DBUS technology to push 
+network events (i.e., new 802.11 network discovered or cable unplugged, 
+etc...) out to applications that are "network aware".
+
+My vision is similar to RedHat's NetworkManager project but goes beyond that 
+by providing a complete replacement for most, if not all, network start-up 
+scripts and providing a uniform mechanism for any Linux desktop to build 
+tools around.
+
+My motivation is this; network management sucks on Linux. Sure if you like to 
+hack you can always ease the burden but users like mom are completeting left 
+hanging. 
+
+I was very happy to see this project come along and I definitely think it's a 
+step in the right direction.
+
+There isn't a whole lot of information given it's infancy so I'm not sure what 
+the API will be built upon.
+
+I'd be interested in getting involved. I can program C/C++ and Python. Most of 
+my work with the QT/KDE API has been with Python. I'd be more interested in 
+the core libraries.
+
+Can anyone give some insight as to how the project plans to interact with 
+network hardware and wether or not something like libiproute2.so would be 
+helpful in achieving these goals?
+
+I have a crude working library just as a proof of concept. The iproute code 
+uses some global variables that I'd need to clean up and I'd probably wrap 
+some of the functions to provide a more consice API. Eventually the ip 
+frontend would simply link to libiproute2 or disappear completely but the 
+option handling is messy as it stands. I'd consider implementing a finite 
+state machine to handle all the options available and provide a cleaner code 
+base.
+
+Here is a simple example of using libiproute2 to list network device 
+information. The iproute2 code is built on top of Linux Netlink IP service 
+protocol - http://www.faqs.org/rfcs/rfc3549.html
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "utils.h"
+#include "iproute.h"
+
+struct rtnl_handle rth;
+
+int main(int argc, char **argv) {
+        preferred_family = AF_PACKET;
+        _SL_ = oneline ? "\\" : "\n" ;
+
+        if (rtnl_open(&rth, 0) < 0)
+                exit(1);
+
+        ipaddr_list_or_flush(0, NULL, 0);
+        rtnl_close(&rth);
+        return 0;
+}
+
+gaumer at debiantosh:(iproute-dev)$ gcc main.c -L./ -liproute2
+gaumer at debiantosh:(iproute-dev)$ ./a.out
+1: lo: <LOOPBACK,UP> mtu 16436 qdisc noqueue master if22052
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: eth0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop master if464320 qlen 1000
+    link/ether 00:03:93:b6:2d:7e brd ff:ff:ff:ff:ff:ff
+3: eth1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop master if464320 qlen 1000
+    link/ieee1394 00:03:93:ff:fe:b6:2d:7e brd ff:ff:ff:ff:ff:ff:ff:ff
+4: eth2: <BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast master if464320 
+qlen 1000
+    link/ether 00:30:65:06:64:56 brd ff:ff:ff:ff:ff:ff
+5: sit0: <NOARP> mtu 1480 qdisc noop master if464320
+    link/sit 0.0.0.0 brd 0.0.0.0
+
+
+This is but a simple example. The library would support all features currently 
+supported by iproute2.
+
+-- 
+Eric Gaumer
+Debian GNU/Linux PPC
+egaumer at pagecache.org
+http://egaumer.pagecache.org
+PGP/GPG Key 0xF15D41E9
+]]></r1:content>
+                </r1:message>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.MLSensor.MailNew</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/MLSensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>MLSensor</ns1:sender>
+              <ns1:timestamp>1348472809888</ns1:timestamp>
+              <ns1:sequencenumber>12</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1348472809888</ns1:startTime>
+                <ns1:endTime>1348472809889</ns1:endTime>
+                <ns1:eventName>ALERT.MLSensor.MailNew</ns1:eventName>
+                <ns1:eventId>12</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r1:message>
+                  <r1:from><![CDATA[ervin at kde.org (Kevin Ottens)]]></r1:from>
+                  <r1:date>Thu, 05 Jan 2006 18:47:09 +0200</r1:date>
+                  <r1:subject><![CDATA[[Kde-hardware-devel] Solid Knowledge Base]]></r1:subject>
+                  <r1:content><![CDATA[Le Jeudi 5 Janvier 2006 15:31, Jean-Remy Falleri a ?crit :
+> Maybe wiki.kde.org should be the right place for this kind of stuff?
+
+Well, I'd like something more focused... I tend to be lost each time I 
+approach wiki.kde.org. ;-)
+
+Please be patient, we're in the process to get a wiki, it's just a matter of 
+time. I hope to get it going this week-end, or next week.
+
+Regards.
+-- 
+K?vin 'ervin' Ottens, http://ervin.ipsquad.net
+"Ni le ma?tre sans disciple, Ni le disciple sans ma?tre,
+Ne font reculer l'ignorance."
+]]></r1:content>
+                </r1:message>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

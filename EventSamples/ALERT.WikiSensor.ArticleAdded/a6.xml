@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.Wikisensor.ArticleAdded</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/wikisensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>WikiSensor</ns1:sender>
+              <ns1:timestamp>1350462497564</ns1:timestamp>
+              <ns1:sequencenumber>1</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1350462497564</ns1:startTime>
+                <ns1:endTime>1350462497564</ns1:endTime>
+                <ns1:eventName>ALERT.WikiSensor.ArticleAdded</ns1:eventName>
+                <ns1:eventId>w1350462497564</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r2:wikiSensor>
+                  <r2:source>Optimis</r2:source>
+                  <r2:url><![CDATA[http://techbase.kde.org/Development/Architecture/KDE4/Solid_(zh_CN)]]></r2:url>
+                  <r2:title><![CDATA[Development/Architecture/KDE4/Soli.]]></r2:title>
+                  <r2:rawText><![CDATA[Jump to: navigation , search
+无�?硬件交互
+有了Solid， KDE的开�?�人员�?�以很方便地编写应用程�?与硬件交互的功能。必�?的抽象，以支�?跨平�?�的应用开�?��??供了Solid的明确和全�?�的API 。
+它的目的�?是控制装置（Solid�?会让你您的手机与您的本地地�?�本�?�步起�?� ） ：Solid*寻找*设备，让您获得关于他们的信�?�。这样，你�?�以很容易地看看CPU的功能 ，或驱动您的相机，或装入您的USB笔。总之：它给你“看而�?碰�?您设备的�?�能性。
+现在，你�?问（至少，我问自己） ： “为什么我应该需�?这个类库？我�?控制在现有的硬件，而�?�?�是看到它�? �?
+Solid帮助您很多：任何设备接�?�，它给你足够的信�?��?�方便地访问它使用其他类库或程�?。这样，如果�?管�?�您的相机，您�?�以使用Solid识别它 （您�?�以使用Solid： ：通知，让你知�?�当你的相机已�?�?�入） ，然�?�您�?�以�?求Solid给您您需�?的信�?��?�处�?�它，例如GPhoto或任何你能想到的其他类库。这�?�样适用于其他任何连接设备：数字电视�?�（一旦确认，Solid将给你 相关的装置 的�??字） ，音频�?�（�?�以使用ALSA ，开放�?�?软件或任何你想�?得：Solid知�?�数�?�访问它） ，便�?��?媒体播放器，网络�?�，等等。此外，它�?�让您检查您是�?�已�?连接到任何网络或没有，你�?�以使用Solid通知系统连接（�?�，您�?�以�?求Solid： “给我进入网络，我�?想关心细节“ ） 。
+无论如何，一些其他的事情需�?说，网络设备和�?牙。这两个类别的设备，Solid�??供的“控制�?的命�??空间：这就是，它�?�以让你直接控制，无需使用外部库文件。这�?味�?�，通过与Solid，你甚至�?�以处�?�您的无线或有线网络接�?�，准他们的ESSID ，并选择他们的IP�?置。您甚至�?�以通过�?牙使用您的手机，等等。
+Solid的“列举�?部分留守在kdelibs，而Control的命�??空间是在kdeBase 。
+]]></r2:rawText>
+                  <r2:user>
+                    <r2:id></r2:id>
+                    <r2:name></r2:name>
+                    <r2:email></r2:email>
+                    <r2:editCount></r2:editCount>
+                  </r2:user>
+                  <r2:comment></r2:comment>
+                  <r2:isMinor>false</r2:isMinor>
+                </r2:wikiSensor>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

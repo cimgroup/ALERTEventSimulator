@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.MLSensor.MailNew</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/MLSensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>MLSensor</ns1:sender>
+              <ns1:timestamp>1348472809930</ns1:timestamp>
+              <ns1:sequencenumber>15</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1348472809930</ns1:startTime>
+                <ns1:endTime>1348472809931</ns1:endTime>
+                <ns1:eventName>ALERT.MLSensor.MailNew</ns1:eventName>
+                <ns1:eventId>15</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r1:message>
+                  <r1:from><![CDATA[michael.larouche at kdemail.net (=?iso-8859-1?q?Micha=EBl_Larouche?=)]]></r1:from>
+                  <r1:date>Fri, 06 Jan 2006 03:44:22 +0200</r1:date>
+                  <r1:subject><![CDATA[[Kde-hardware-devel] Adding "admin" direction as svn:externals ?]]></r1:subject>
+                  <r1:content><![CDATA[On my local copy on /branches/work/kdehw, I added admin directory to 
+"svn:externals" property. This fetch automaticly the admin directory required 
+to compile kdehw.
+
+Since kdehw is a independent module will be in branches for a long time, I 
+think that's a good thing that we fetch admin directory.
+
+-- 
+Micha?l Larouche (Shock The Dark Mage)
+KDE developer working on Kopete, Kamefu...on dial-up :P
+--------------------------------------
+Blog: http://mlarouche.blogspot.com/
+MSN/Email: michael.larouche at kdemail.net
+IRC: irc.freenode.org/DarkShock on #kopete,#solid,#kamefu,#plasma
+Jabber: darkshock at myjabber.net
+]]></r1:content>
+                </r1:message>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

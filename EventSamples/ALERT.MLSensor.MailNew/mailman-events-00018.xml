@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.MLSensor.MailNew</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/MLSensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>MLSensor</ns1:sender>
+              <ns1:timestamp>1348472809957</ns1:timestamp>
+              <ns1:sequencenumber>17</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1348472809957</ns1:startTime>
+                <ns1:endTime>1348472809960</ns1:endTime>
+                <ns1:eventName>ALERT.MLSensor.MailNew</ns1:eventName>
+                <ns1:eventId>17</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r1:message>
+                  <r1:from><![CDATA[wstephenson at kde.org (Will Stephenson)]]></r1:from>
+                  <r1:date>Fri, 06 Jan 2006 11:07:05 +0200</r1:date>
+                  <r1:subject><![CDATA[[Kde-hardware-devel] networkstatus]]></r1:subject>
+                  <r1:content><![CDATA[Le Jeudi 5 Janvier 2006 20:22, Eric Gaumer a ?crit :
+> NetworkManager seems to be built around libglib2 and I'm not sure how I
+> feel about that. It seems more geared toward GNOME APIs though I do realize
+> it's completely neutral.
+
+Yes, in particular since on our side it would be accessed via the exposed DBUS 
+methods.
+
+> In any event if you look at the backend of NetworkManager you'll see things
+> such as:
+>
+>         /* Add default gateway */
+>         buf = g_strdup_printf ("/sbin/ip route add default dev %s", iface);
+>         nm_spawn_process (buf);
+>         g_free (buf);
+>
+> So what I propose to do with libiproute2 fills a void that NetworkManager
+> doesn't address at this time.
+> [...]
+> At any rate, I am but one person with limited time to offer so my immediate
+> short term goal is to get a library built from iproute that could possibly
+> be used in a number of applications.
+
+Indeed. That's a good reason to have such a project around.
+
+> I'm here on the KDE Hardware list because I've recently moved from Gnome to
+> KDE and think that KDE4 is going to be a major breakthrough on the desktop.
+> Being that I use KDE, I'm obviously interested in the direction it is
+> heading. Though I would like to see my efforts being enjoyed in a
+> homogeneous fashion, I would sleep better knowing it would benefit KDE and
+> thus have direct benefits on myself.
+
+Yes, it would benefit KDE. Solid is higher level, and tries to encapsulate the 
+underlying platform. But we build upon this underlying platform, so if it's 
+cleaner and more robust it'll make our work easier and we'll be able to 
+concentrate more directly on desktop applications needs. The more we cover 
+those needs the best future KDE applications will be. That's a "win-win" 
+situation IMHO.
+
+> I've read of a libkdehw but haven't seen any code. Is this anything of
+> substance at the moment?
+
+This one will surely number 1 on the wiki. :-)
+Ok, it's currently in the KDE subversion repository : branches/work/kdehw
+Please note that currently it only addresses hardware discovery, there's no 
+code for network management yet.
+
+> Is it meant to address the true core or is it an 
+> API to provide an interface between KDE and some lower core? Possibly
+> something along the lines of libiproute2?
+
+It's an API to provide an interface between KDE and lower level facilities. So 
+possibly will be able to have a backend using libiproute2 directly, but it's 
+more likely that we'll communicate with a daemon over DBUS
+
+> I only ask because if it's a true core than I would switch my focus to
+> helping that evolve. I have to imagine that something built from iproute2
+> code is probably as low level as you'll see in user space. Building the
+> library from iproute is more of a reorganization of code. All that code is
+> written and maintained so my goal is to restructure the build process so
+> that the 'ip' frontend gets separated from the actual functions which would
+> be used to build a core library that 'ip' would merely link against.
+>
+> This way those developers who already maintain iproute2 could continue to
+> maintain that project and I could shift to something at a higher level like
+> the Solid framework.
+
+Well, that really depends on your tastes. ;-)
+But yes, Solid is higher level than your current work.
+
+> So it would seem that a library built from iproute would in fact be helpful
+> because one consideration has been the use of NetworkManager which would
+> obviously benefit from my work.
+
+There's no doubt about this IMHO, that library will be helpful. I doubt that 
+we'll use it directly from Solid though. From what I know about 
+NetworkManager that would be a good move if it uses it.
+
+> Wether NetworkManager morphs into something larger or something similar but
+> larger comes along, it seems the Solid framework would ultimately benefit.
+
+Yes. Through the relevant backends.
+
+> As of now I simply build a standalone library but as I stated earlier, I
+> would rather restructure things inside of iproute so that it contains the
+> core library. I'm not too sure how those developers would feel about that
+> but I don't think it would disrupt them too much.
+
+Did you contact them about your plans? If not it would be wise to do it I 
+guess.
+
+> The library I speak of has a very direct goal; to provide an interface to
+> the functions that iproute2 offers. Anything outside of that would be
+> addressed in a lateral component and/or a higher level one.
+
+Which definitely means that your library alone wouldn't be enough for our 
+needs. On the other hand, having a daemon like NetworkManager using it is an 
+idea that pleases me.
+
+I'm glad to know someone is trying to address this library need, in the end 
+it'll result in cleaner code for some tools (NetworkManager looking like a 
+natural client for such a work).
+
+Regards.
+-- 
+K?vin 'ervin' Ottens, http://ervin.ipsquad.net
+"Ni le ma?tre sans disciple, Ni le disciple sans ma?tre,
+Ne font reculer l'ignorance."
+]]></r1:content>
+                </r1:message>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

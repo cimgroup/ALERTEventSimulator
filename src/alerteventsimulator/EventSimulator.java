@@ -396,6 +396,10 @@ public class EventSimulator extends javax.swing.JFrame {
         Constants.sEventTypes.add(Constants.c_ET_ALERT_MLSensor_MailNew);
         Constants.sEventTypes.add(Constants.c_ET_ALERT_WikiSensor_ArticleAdded);
         Constants.sEventTypes.add(Constants.c_ET_ALERT_WikiSensor_ArticleModified);
+        Constants.sEventTypes.add(Constants.c_ET_ALERT_UI_KEUIRequest);
+        Constants.sEventTypes.add(Constants.c_ET_ALERT_UI_APICallRequest);
+        Constants.sEventTypes.add(Constants.c_ET_ALERT_UI_Recommender_IdentitiesRecommendationRequest);
+        Constants.sEventTypes.add(Constants.c_ET_ALERT_UI_Recommender_IssueRecommendationRequest);
         
         for(int i = 0; i < Constants.sEventTypes.size(); i++)
         {
@@ -624,14 +628,34 @@ public class EventSimulator extends javax.swing.JFrame {
         {
             sXML = SimulateArticleModified();
         }
+        else if (sEventType.equals(Constants.c_ET_ALERT_UI_KEUIRequest))
+        {
+            sXML = SimulateKEUIRequest();
+        }
+        else if (sEventType.equals(Constants.c_ET_ALERT_UI_APICallRequest))
+        {
+            sXML = SimulateAPICallRequest();
+        }
+        else if (sEventType.equals(Constants.c_ET_ALERT_UI_Recommender_IdentitiesRecommendationRequest))
+        {
+            sXML = SimulateIdentitiesRecommendationRequest();
+        }
+        else if (sEventType.equals(Constants.c_ET_ALERT_UI_Recommender_IssueRecommendationRequest))
+        {
+            sXML = SimulateIssueRecommendationRequest();
+        }
         return sXML;
     }
     
     public String SimulateIssueNew() throws ParserConfigurationException, SAXException, IOException
     {
         String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_KESI_IssueNew);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        
+        sFileEvent = DeleteTag(sFileEvent, "s:issueId");
         String sID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "s:issueId", sID, "s:issue");
         return sFileEvent;
@@ -640,8 +664,12 @@ public class EventSimulator extends javax.swing.JFrame {
     public String SimulateIssueUpdate() throws ParserConfigurationException, SAXException, IOException
     {
         String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_KESI_IssueUpdate);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        
+        sFileEvent = DeleteTag(sFileEvent, "s:issueId");
         String sID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "s:issueId", sID, "s:issue");
         return sFileEvent;
@@ -650,6 +678,8 @@ public class EventSimulator extends javax.swing.JFrame {
     public String SimulateCommitNew() throws ParserConfigurationException, SAXException, IOException
     {
         String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_KESI_CommitNew);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
         return sFileEvent;
@@ -658,8 +688,12 @@ public class EventSimulator extends javax.swing.JFrame {
     public String SimulateForumPostNew() throws ParserConfigurationException, SAXException, IOException
     {
         String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_ForumSensor_ForumPostNew);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        
+        sFileEvent = DeleteTag(sFileEvent, "r:postId");
         String sID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "r:postId", sID, "r:forumSensor");
         return sFileEvent;
@@ -668,8 +702,12 @@ public class EventSimulator extends javax.swing.JFrame {
     public String SimulateMailNew() throws ParserConfigurationException, SAXException, IOException
     {
         String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_MLSensor_MailNew);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        
+        sFileEvent = DeleteTag(sFileEvent, "r1:messageId");
         String sID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "r1:messageId", sID, "r1:message");
         return sFileEvent;
@@ -678,8 +716,12 @@ public class EventSimulator extends javax.swing.JFrame {
     public String SimulateArticleAdded() throws ParserConfigurationException, SAXException, IOException
     {
         String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_WikiSensor_ArticleAdded);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        
+        sFileEvent = DeleteTag(sFileEvent, "r2:id");
         String sID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "r2:id", sID, "r2:wikiSensor");
         return sFileEvent;
@@ -688,10 +730,54 @@ public class EventSimulator extends javax.swing.JFrame {
     public String SimulateArticleModified() throws ParserConfigurationException, SAXException, IOException
     {
         String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_WikiSensor_ArticleModified);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        
+        sFileEvent = DeleteTag(sFileEvent, "r2:id");
         String sID = UUID.randomUUID().toString();
         sFileEvent = InsertTagAfterTag(sFileEvent, "r2:id", sID, "r2:wikiSensor");
+        return sFileEvent;
+    }
+    
+    public String SimulateAPICallRequest() throws ParserConfigurationException, SAXException, IOException
+    {
+        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_APICallRequest);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
+        String sEventID = UUID.randomUUID().toString();
+        sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        return sFileEvent;
+    }
+    
+    public String SimulateKEUIRequest() throws ParserConfigurationException, SAXException, IOException
+    {
+        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_KEUIRequest);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
+        String sEventID = UUID.randomUUID().toString();
+        sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        return sFileEvent;
+    }
+    
+    public String SimulateIdentitiesRecommendationRequest() throws ParserConfigurationException, SAXException, IOException
+    {
+        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_IdentitiesRecommendationRequest);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
+        String sEventID = UUID.randomUUID().toString();
+        sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        return sFileEvent;
+    }
+    
+    public String SimulateIssueRecommendationRequest() throws ParserConfigurationException, SAXException, IOException
+    {
+        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_IssueRecommendationRequest);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
+        String sEventID = UUID.randomUUID().toString();
+        sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
         return sFileEvent;
     }
     
@@ -728,7 +814,23 @@ public class EventSimulator extends javax.swing.JFrame {
         {
             String sNewTagFull = "<" + sNewTag + ">" + sNewTagValue + "</" + sNewTag + ">";
             sAfterTag = "<" + sAfterTag + ">";
-            sFile = sFile.substring(0, sFile.indexOf(sAfterTag) + sAfterTag.length()) + sNewTagFull + sFile.substring(sFile.indexOf(sAfterTag) + sAfterTag.length() + 1);  
+            sFile = sFile.substring(0, sFile.indexOf(sAfterTag) + sAfterTag.length()) + sNewTagFull + sFile.substring(sFile.indexOf(sAfterTag) + sAfterTag.length());  
+        }
+        catch (Exception ex) {}
+        
+        return sFile;
+    }
+    
+    public String DeleteTag(String sFile, String sTagToDelete)
+    {
+        try 
+        {
+            if (sFile.contains(sTagToDelete))
+            {
+                String sTagToDeleteStart = "<" + sTagToDelete + ">";
+                String sTagToDeleteEnd = "</" + sTagToDelete + ">";
+                sFile = sFile.substring(0, sFile.indexOf(sTagToDeleteStart)) + sFile.substring(sFile.indexOf(sTagToDeleteEnd) + sTagToDeleteEnd.length());
+            }
         }
         catch (Exception ex) {}
         

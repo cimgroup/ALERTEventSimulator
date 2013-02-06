@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.MLSensor.MailNew</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/MLSensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>MLSensor</ns1:sender>
+              <ns1:timestamp>1348472809760</ns1:timestamp>
+              <ns1:sequencenumber>2</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1348472809760</ns1:startTime>
+                <ns1:endTime>1348472809762</ns1:endTime>
+                <ns1:eventName>ALERT.MLSensor.MailNew</ns1:eventName>
+                <ns1:eventId>2</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r1:message>
+                  <r1:from><![CDATA[mattchorman at gmail.com (Matt Chorman)]]></r1:from>
+                  <r1:date>Thu, 05 Jan 2006 05:48:35 +0200</r1:date>
+                  <r1:subject><![CDATA[[Kde-hardware-devel] Source question]]></r1:subject>
+                  <r1:content><![CDATA[At the risk of appearing blind...
+
+I can't seem to find any source or documentation anywhere... I have found this 
+though:
+
+"The APIs for working with and improving Solid will appear here as they become 
+available. First uploads of the API documentation to this website will likely 
+occur in Q2 2006 given the current roadmap. They will undoubtedly be 
+available sooner than that in KDE's subversion code repository where you are 
+welcome to track Solid development as it happens."
+
+Has there been any public development of the API or is it still private at 
+this point? Will the solid repo be added to the kde4 branch?	
+
+Thanks,
+Matt
+]]></r1:content>
+                </r1:message>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

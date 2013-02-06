@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.MLSensor.MailNew</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/MLSensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>MLSensor</ns1:sender>
+              <ns1:timestamp>1348472809917</ns1:timestamp>
+              <ns1:sequencenumber>14</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1348472809917</ns1:startTime>
+                <ns1:endTime>1348472809919</ns1:endTime>
+                <ns1:eventName>ALERT.MLSensor.MailNew</ns1:eventName>
+                <ns1:eventId>14</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r1:message>
+                  <r1:from><![CDATA[waldo.bastian at intel.com (Bastian, Waldo)]]></r1:from>
+                  <r1:date>Thu, 05 Jan 2006 20:33:36 +0200</r1:date>
+                  <r1:subject><![CDATA[[Kde-hardware-devel] networkstatus]]></r1:subject>
+                  <r1:content><![CDATA[On Thursday 05 January 2006 10:13 am, Kevin Ottens wrote:
+
+> Well, you're basically describing a NetworkManager on steroids. I'm not
+> against seeing something like this emerge, but why aren't you sharing with
+> them or trying to extend it in the first place?
+>
+> Please note that I'm asking this to satisfy my curiosity, there's surely a
+> lot of reasons to start from scratch, but that would be sad to duplicate
+> efforts for the wrong reason. ;-)
+
+NetworkManager seems to be built around libglib2 and I'm not sure how I feel 
+about that. It seems more geared toward GNOME APIs though I do realize it's 
+completely neutral.
+
+In any event if you look at the backend of NetworkManager you'll see things 
+such as:
+
+        /* Add default gateway */
+        buf = g_strdup_printf ("/sbin/ip route add default dev %s", iface);
+        nm_spawn_process (buf);
+        g_free (buf);
+
+So what I propose to do with libiproute2 fills a void that NetworkManager 
+doesn't address at this time.
+
+It may very well be the case that I would eventually merge this work with that 
+of NetworkManager providing we agreed on the overall goal. If we fail to 
+agree then they could very well still use libiproute2 and head in their own 
+direction. It wouldn't negate the value of this core work.
+
+The guys working on NetworkManger have more expertise in this area and so I 
+would certainly consider any advice they had to offer. I just see something 
+bigger than what their current design goal is (though they are similar in 
+many ways).
+
+At any rate, I am but one person with limited time to offer so my immediate 
+short term goal is to get a library built from iproute that could possibly be 
+used in a number of applications.
+
+I'm here on the KDE Hardware list because I've recently moved from Gnome to 
+KDE and think that KDE4 is going to be a major breakthrough on the desktop. 
+Being that I use KDE, I'm obviously interested in the direction it is 
+heading. Though I would like to see my efforts being enjoyed in a homogeneous 
+fashion, I would sleep better knowing it would benefit KDE and thus have 
+direct benefits on myself.
+
+> Note that such a daemon would surely make my dreams come true (be it
+> networkmanager improved or something completely different).
+
+I think in order to move Linux forward we have to come up with this type of 
+solution. It's an ambitious but achievable goal in light of the open source 
+community.
+
+> > There isn't a whole lot of information given it's infancy so I'm not sure
+> > what the API will be built upon.
+>
+> I don't want to set a choice in stone, hence why the current design has a
+> frontend/backend split.
+> Since I'm currently focusing on hardware discovery, I provide a HAL
+> backend, but it's perfectly feasible to have another backend for a
+> competing solution or another platform. The backend just will have to
+> provide the right interfaces. Also note that those interfaces are far from
+> decided yet regarding network management, I'm clearly open to proposals in
+> this area.
+
+I've read of a libkdehw but haven't seen any code. Is this anything of 
+substance at the moment? Is it meant to address the true core or is it an API 
+to provide an interface between KDE and some lower core? Possibly something 
+along the lines of libiproute2?
+
+I only ask because if it's a true core than I would switch my focus to helping 
+that evolve. I have to imagine that something built from iproute2 code is 
+probably as low level as you'll see in user space. Building the library from 
+iproute is more of a reorganization of code. All that code is written and 
+maintained so my goal is to restructure the build process so that the 'ip' 
+frontend gets separated from the actual functions which would be used to 
+build a core library that 'ip' would merely link against.
+
+This way those developers who already maintain iproute2 could continue to 
+maintain that project and I could shift to something at a higher level like 
+the Solid framework. 
+
+> > Can anyone give some insight as to how the project plans to interact with
+> > network hardware and wether or not something like libiproute2.so would be
+> > helpful in achieving these goals?
+>
+> Of course it would surely be helpful. I tend to think that the lib itself
+> wouldn't be enough though. A lib+daemon combo like the one you described
+> above looks very interesting.
+
+So it would seem that a library built from iproute would in fact be helpful 
+because one consideration has been the use of NetworkManager which would 
+obviously benefit from my work.
+
+Wether NetworkManager morphs into something larger or something similar but 
+larger comes along, it seems the Solid framework would ultimately benefit.
+
+> > I have a crude working library just as a proof of concept. The iproute
+> > code uses some global variables that I'd need to clean up and I'd
+> > probably wrap some of the functions to provide a more consice API.
+> > Eventually the ip frontend would simply link to libiproute2 or disappear
+> > completely but the option handling is messy as it stands. I'd consider
+> > implementing a finite state machine to handle all the options available
+> > and provide a cleaner code base.
+>
+> Just for further references, could you give us the necessary information to
+> download the code of your library?
+
+Give me a week or so to get the build files written. Everything I've done has 
+been by hand up to this point (compiling, linking, etc...). Once I have 
+something that you can simply ./configure;make;make install I'll post the 
+code online.
+
+As of now I simply build a standalone library but as I stated earlier, I would 
+rather restructure things inside of iproute so that it contains the core 
+library. I'm not too sure how those developers would feel about that but I 
+don't think it would disrupt them too much.
+
+> In order to have the whole picture of your work. Do you have any plan for
+> dealing with ppp* connections, and VPN?
+
+This stuff would sit inside the daemon layer and outside of libiproute2. There 
+is also the issue of DHCP which NetworkManager already uses dhcdbd to 
+somewhat address. Wether I would merge my ideas into NetworkManager or create 
+something entirely new, I would surely benefit from the work being done on 
+the NetworkManager project in areas such as this.
+
+The library I speak of has a very direct goal; to provide an interface to the 
+functions that iproute2 offers. Anything outside of that would be addressed 
+in a lateral component and/or a higher level one.
+
+I don't claim to have a complete solution but rather a general direction of 
+where I would like to end up. As things begin to surface and other developers 
+join in the work, a more complete and consice design goal would be declared. 
+As of now, it's just a embryo of a project living in my mind.
+
+-- 
+Eric Gaumer
+Debian GNU/Linux PPC
+egaumer at pagecache.org
+http://egaumer.pagecache.org
+PGP/GPG Key 0xF15D41E9
+]]></r1:content>
+                </r1:message>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

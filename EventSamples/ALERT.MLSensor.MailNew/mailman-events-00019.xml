@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.MLSensor.MailNew</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/MLSensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>MLSensor</ns1:sender>
+              <ns1:timestamp>1348472809970</ns1:timestamp>
+              <ns1:sequencenumber>18</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1348472809970</ns1:startTime>
+                <ns1:endTime>1348472809971</ns1:endTime>
+                <ns1:eventName>ALERT.MLSensor.MailNew</ns1:eventName>
+                <ns1:eventId>18</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r1:message>
+                  <r1:from><![CDATA[ervin at kde.org (Kevin Ottens)]]></r1:from>
+                  <r1:date>Fri, 06 Jan 2006 11:43:44 +0200</r1:date>
+                  <r1:subject><![CDATA[[Kde-hardware-devel] networkstatus]]></r1:subject>
+                  <r1:content><![CDATA[Le Vendredi 6 Janvier 2006 10:07, Will Stephenson a ?crit :
+> Hi Waldo, list.
+
+Hi Will,
+
+> I'm glad to be a part of the team :). 
+
+Welcome on board. ;-)
+
+> As Waldo says, it's only in pim for organisational reasons.  The
+> functionality is not in any way pim specific.  We can move it to kdelibs
+> when the time is right.
+
+Ok, I should have been confused by the state machine. It looked oriented on 
+syncing features and as such looked a bit PIM oriented to me. Thanks to you 
+and Waldo for clarification.
+
+> To summarise what we have at the moment:
+>
+> *) networkstatus is a kded module
+> *) it is a high level interface to network status information.  This means
+> it does not know anything about specific interfaces, wired/wireless, IP
+> details.
+
+Ok, and with Solid that will be our primary goal to provide such information.
+
+> *) it has 2 functions 
+> *) - interface to find out "Is there a network?".  This works by polling
+> kded over DCOP, and via DCOP signals
+> *) - interface to asynchronously request a network connection (over DCOP),
+> and receive notification when the network is available.
+>
+> Currently the interface is a bit more powerful than the implementations -
+> we envisaged being able to request "Give me a connection to host XYZ" so
+> that if a VPN or specific interface is required for that host, it can be
+> started. However, we don't have a network infrastructure that can do that
+> yet.
+
+Yes, so let's improve this infrastructure first thanks to Solid and from here 
+we'll be able to move networkstatus and make it aware of the extra 
+information provided by kdelibs itself.
+It looks like a safe way to do it IMO, in particular since you're on board 
+having strong knowledge of networkstatus needs (as you might have noticed 
+that's not my case yet). And that's more or less how I plan to proceed with 
+the mediamanager.
+Do you agree with this?
+
+Regards.
+-- 
+K?vin 'ervin' Ottens, http://ervin.ipsquad.net
+"Ni le ma?tre sans disciple, Ni le disciple sans ma?tre,
+Ne font reculer l'ignorance."
+]]></r1:content>
+                </r1:message>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

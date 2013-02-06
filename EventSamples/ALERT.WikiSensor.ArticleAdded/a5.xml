@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.Wikisensor.ArticleAdded</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/wikisensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>WikiSensor</ns1:sender>
+              <ns1:timestamp>1350462497412</ns1:timestamp>
+              <ns1:sequencenumber>1</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1350462497412</ns1:startTime>
+                <ns1:endTime>1350462497412</ns1:endTime>
+                <ns1:eventName>ALERT.WikiSensor.ArticleAdded</ns1:eventName>
+                <ns1:eventId>w1350462497412</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r2:wikiSensor>
+                  <r2:source>Optimis</r2:source>
+                  <r2:url><![CDATA[http://techbase.kde.org/Development/Architecture/KDE4/Solid_(it)]]></r2:url>
+                  <r2:title><![CDATA[Development/Architecture/KDE4/Soli.]]></r2:title>
+                  <r2:rawText><![CDATA[Jump to: navigation , search
+Perfetta interazione con l'hardware
+Con Solid, gli sviluppatori di KDE sono in grado di scrivere facilmente applicazioni con caratteristiche di interazione con l'hardware. Le astrazioni necessarie a sostenere lo sviluppo di applicazioni cross-platform sono fornite dalla chiara ed esaustiva API di Solid.
+Il suo obbiettivo non è il controllo dei dispositivi (Solid non ti consente di sincronizzare il tuo cellulare con la tua Rubrica locale): Solid *guarda* i dispositivi e ti consente di accedere alle informazioni che ha su di loro. In questo modo, si può facilmente guardare le funzioni della CPU, o il driver che si occupa di gesitre la tua macchina fotografica, o il mount point della tua penna usb.  In sintesi: ti dà la possibilità di "guardare ma non toccare" le tue periferiche.
+Ora ti chiederai (almeno,io me lo sono chiesto): "Cosa me ne faccio di questa libreria? Io voglio controllare l'hardware a disposizione, non vederlo soltanto!"
+Beh, Solid ti aiuta notevolmente: per ogni dispositivo, ti dà le informazioni necessarie per accederci facilmente usando altre librerie o stacks. In questo modo, se vuoi gestire la tua fotocamera, puoi usare Solid per riconoscerla ( puoi utilizzare Solid::Notifier il quale ti consente di sapere quando la fotocamera è stata collegata), e quindi è possibile interrogare Solid in modo tale che vi fornisca tutte le informazioni di cui avete bisogno per gestirla, per esempio con GPhoto o con qualsiasi altra libreria necessitiate. Lo stesso vale per qualsiasi altro dispositivo collegato: schede DVB (una volta riconosciute, Solid vi fornisce il nome del dispositivo associato), schede audio (si può usare ALSA, OSS o quello che volete: Solid conosce i data per accedervi), lettori multimediali portatili, schede di rete, ecc. Inoltre, ti consente di verificare se sei connesso ad una rete o no, ed è possibile utilizzare Solid per dire al sistema di connettersi(cioè, si può chiedere a Solid: "Dammi l'accesso alla rete, non voglio aver cura dei dettagli").
+Comunque, ci sono altre cose da dire riguardo le periferiche di rete e il Bluetooth. Per questi due tipi di dispositivi, Solid  prevede il "Controllo" dei namespace: cioè, vi permette di controllarle direttamente, senza l'uso di librerie esterne. Questo significa che con Solid, è possibile anche gestire la propria rete wireless o via cavo, associarli ad un essid, e scegliere la configurazione IP desiderata. E' possibile anche accedere al cellulare tramite Bluetooth, e cos' via.
+La "listing" part di Solid risiede nella libreria kdelibs, mentre il  "Controllo" dei namespace è in kdebase.
+]]></r2:rawText>
+                  <r2:user>
+                    <r2:id></r2:id>
+                    <r2:name></r2:name>
+                    <r2:email></r2:email>
+                    <r2:editCount></r2:editCount>
+                  </r2:user>
+                  <r2:comment></r2:comment>
+                  <r2:isMinor>false</r2:isMinor>
+                </r2:wikiSensor>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

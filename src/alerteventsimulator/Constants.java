@@ -24,5 +24,9 @@ public class Constants {
     public static String c_ET_ALERT_MLSensor_MailNew = "ALERT.MLSensor.MailNew";
     public static String c_ET_ALERT_WikiSensor_ArticleAdded = "ALERT.WikiSensor.ArticleAdded";
     public static String c_ET_ALERT_WikiSensor_ArticleModified = "ALERT.WikiSensor.ArticleModified";
+    public static String c_ET_ALERT_UI_APICallRequest = "ALERT.UI.APICallRequest";
+    public static String c_ET_ALERT_UI_KEUIRequest = "ALERT.UI.KEUIRequest";
+    public static String c_ET_ALERT_UI_Recommender_IdentitiesRecommendationRequest = "ALERT.UI.Recommender.IdentitiesRecommendationRequest";
+    public static String c_ET_ALERT_UI_Recommender_IssueRecommendationRequest = "ALERT.UI.Recommender.IssueRecommendationRequest";
 
 }

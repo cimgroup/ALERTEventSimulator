@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.Wikisensor.ArticleAdded</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/wikisensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>WikiSensor</ns1:sender>
+              <ns1:timestamp>1350462497756</ns1:timestamp>
+              <ns1:sequencenumber>1</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1350462497756</ns1:startTime>
+                <ns1:endTime>1350462497756</ns1:endTime>
+                <ns1:eventName>ALERT.WikiSensor.ArticleAdded</ns1:eventName>
+                <ns1:eventId>w1350462497756</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r2:wikiSensor>
+                  <r2:source>Optimis</r2:source>
+                  <r2:url><![CDATA[http://techbase.kde.org/Development/Tutorials/Solid/Device_Actions]]></r2:url>
+                  <r2:title><![CDATA[Development/Tutorials/Solid/Device.]]></r2:title>
+                  <r2:rawText><![CDATA[6 Installing actions
+Introduction
+When a new data device is inserted or detected by Solid, the hardware awareness framework introduced in KDE Platform 4, it gets added to the Device Notifier (a Plasma widget that is responsible for handling device events), Places list and other relevant areas in the user interface.
+Each device has a set of related actions which the user can perform on the device, depending on the device type and its contents.  For example, when the media is an audio CD, the Device Notifier may offer to play that CD using Amarok.  The default actions are not a part of Plasma Desktop, however; rather, each action is defined by a simple .desktop file that is installed by the application that handles the action (e.g. Amarok in our Audio CD example), and goes away when the application is removed.
+You can add your own actions and modify existing ones using the Device Actions system setting module; however, such changes are limited to the user that requests the change.  If you want to install a custom action along with your application, you have to dig a bit deeper.
+Anatomy of an action
+An Action file is a desktop configuration file similar to the following one:
+[Desktop Entry] X-KDE-Solid-Predicate=OpticalDisc.availableContent & 'Audio' Type=Service Actions=Play;   [Desktop Action Play] Name=Play Audio CD with Amarok Name[fr]=Jouer CD Audio avec Amarok # names in other languages Icon=amarok Exec=amarok --cdplay %f
+Actions and devices
+The Device Notifier gets the devices and their corresponding actions by interrogating thehotplug Plasma DataEngine.  The hotplug DataEngine gets the set of devices from Solid and the set of actions from the subdirectories ./solid/actions relative to the application settings path in KDE.  The set of actions pertaining to each device is then obtained by evaluating the Solid Predicate specified in the action against the physical and logical properties of the device; if the predicate holds, the action is included. This is, of course, not limited to Plasma Desktop: any application can similarly query Solid for the same actions.
+Action predicates
+The predicate for each action is specified in the entry
+X-KDE-Solid-Predicate
+.  The syntax of the predicate allows to construct an object of class Solid::Predicate out of it.
+Atomic predicates can be of the form
+DeviceClass
+]]></r2:rawText>
+                  <r2:user>
+                    <r2:id></r2:id>
+                    <r2:name></r2:name>
+                    <r2:email></r2:email>
+                    <r2:editCount></r2:editCount>
+                  </r2:user>
+                  <r2:comment></r2:comment>
+                  <r2:isMinor>false</r2:isMinor>
+                </r2:wikiSensor>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

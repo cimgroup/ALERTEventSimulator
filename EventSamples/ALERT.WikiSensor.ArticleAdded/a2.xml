@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.Wikisensor.ArticleAdded</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/wikisensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>WikiSensor</ns1:sender>
+              <ns1:timestamp>1350462497022</ns1:timestamp>
+              <ns1:sequencenumber>1</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1350462497022</ns1:startTime>
+                <ns1:endTime>1350462497022</ns1:endTime>
+                <ns1:eventName>ALERT.WikiSensor.ArticleAdded</ns1:eventName>
+                <ns1:eventId>w1350462497022</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r2:wikiSensor>
+                  <r2:source>Optimis</r2:source>
+                  <r2:url><![CDATA[http://techbase.kde.org/Development/Architecture/KDE4/Solid]]></r2:url>
+                  <r2:title><![CDATA[architecture page]]></r2:title>
+                  <r2:rawText><![CDATA[2.3 UML Diagram
+Seamless Hardware Interaction
+With Solid, KDE developers are able to easily write applications with hardware interaction features. The necessary abstraction to support cross-platform application development is provided by Solid's clear and comprehensive API.
+Its aim is not the control of the devices (Solid doesn't let you synchronize your mobile phone with your local address book): Solid looks for devices and gives you access to the information it has about them. This way, you could easily look at the functions of the cpu, or at the driver that handles your camera, or the mount point of your usb pen. In sum: it gives you the possibility of "seeing without touching" your devices.
+Now you would ask (at least, I asked myself): "Why should I need this library? I want to control the available hardware, not just see it!"
+Well, Solid helps you a lot again: for any device interface, it gives you enough information to easily access it using other libraries or stacks. This way, if you want to manage your camera, you can use Solid to recognize it (you can use Solid::Notifier that will let you know when your camera has been plugged in), and then you can ask Solid to give you the information you need to handle it, for example with GPhoto or any other library you can think of. The same applies for any other plugged device: DVB cards (once recognized, Solid gives you the name of the associated device), audio cards (you can use ALSA, OSS or whatever you want: Solid knows the data to access it), portable media players, network cards, et cetera. Moreover, it lets you check if you're connected to any network or not, and you can use Solid to tell the system to connect (that is, you can ask Solid: "Give me access to the network, I don't want to care about details").
+Anyway, some other things need to be said about network devices and Bluetooth. For these two classes of devices, Solid provides the "Control" namespace: that is, it lets you control them directly, without using external libraries. This means that with Solid, you can even handle your wireless or wired network interfaces, associate them to an essid, and choose ip configuration for them. You can even access your phone through Bluetooth, and so on.
+The "listing" part of Solid resides in kdelibs, while the Control namespace is in kdebase.
+Architecture Summary
+Solid was implemented using a frontend/backend approach aiming portability among platforms like Linux and Windows. The frontend provides the high-level API for developers using Solid and backends deal with the specific hardware issues for the different platforms.
+Frontend View
+The frontend classes provide the API for developers and are also wrappers for several kinds of devices. All frontend clases are available in kdelibs/solid/solid.
+Solid::DeviceNotifier
+The device notifier is a singleton used to obtain information about the hardware available on the system. It provides to applications the unique entry point for hardware discovery and/or notifications about changes (with the use of Solid::DeviceNotifier::deviceAdded(const QString) and Solid::DeviceNotifier::deviceRemoved(const QString) signals). This class calls the following Solid::DeviceManager.
+Solid::DeviceManager
+This (private) class maintains the state of all devices currently available on the system. Through it is possible to get, for example, the list of all devices or a list of device matching with some criteria (using Solid::Predicate).
+Solid::Device
+This class represents a general hardware device. A device contains one or more device interfaces (capabilities).
+Solid::DeviceInterface
+A device interface represents a certain feature that a device contains. This class is on the top of the device interfaces inheritance tree. All specialized device interfaces implement it.
+Specialized classes (Solid::Processor, Solid::OpticalDrive, Solid::Battery, etc.)
+These classes actually represent the capabilities that a device can have. All classes extend Solid::DeviceInterface.
+Backend View
+A Solid backend deal with the platform-specific ways of handle devices. Developers using libsolid do not use the backend classes directly. Applications do it through frontend/wrapping classes in the Solid namespace.
+All backends have to implement the interfaces in kdelibs/solid/solid/ifaces (namespace Solid::Ifaces) correspondent to its devices. These interfaces are the basics of which API a given device has to provide to the frontend classes.
+UML Diagram
+This diagram shows the relationships between the Solid frontend classes and the platform-specific backend classes (Foo backend).
+]]></r2:rawText>
+                  <r2:user>
+                    <r2:id></r2:id>
+                    <r2:name></r2:name>
+                    <r2:email></r2:email>
+                    <r2:editCount></r2:editCount>
+                  </r2:user>
+                  <r2:comment></r2:comment>
+                  <r2:isMinor>false</r2:isMinor>
+                </r2:wikiSensor>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

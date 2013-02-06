@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.Wikisensor.ArticleAdded</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/wikisensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>WikiSensor</ns1:sender>
+              <ns1:timestamp>1350462496815</ns1:timestamp>
+              <ns1:sequencenumber>1</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1350462496815</ns1:startTime>
+                <ns1:endTime>1350462496815</ns1:endTime>
+                <ns1:eventName>ALERT.WikiSensor.ArticleAdded</ns1:eventName>
+                <ns1:eventId>w1350462496815</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r2:wikiSensor>
+                  <r2:source>Optimis</r2:source>
+                  <r2:url><![CDATA[http://techbase.kde.org/Welcome_to_KDE_TechBase]]></r2:url>
+                  <r2:title><![CDATA[KDE TechBase]]></r2:title>
+                  <r2:rawText><![CDATA[This page was last modified on 31 July 2012, at 16:45.                       This page has been accessed 1,654,384 times.                       Content is available under Creative Commons License SA 3.0 as well as the GNU Free Documentation License 1.2 .
+Navigation
+]]></r2:rawText>
+                  <r2:user>
+                    <r2:id></r2:id>
+                    <r2:name></r2:name>
+                    <r2:email></r2:email>
+                    <r2:editCount></r2:editCount>
+                  </r2:user>
+                  <r2:comment></r2:comment>
+                  <r2:isMinor>false</r2:isMinor>
+                </r2:wikiSensor>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>

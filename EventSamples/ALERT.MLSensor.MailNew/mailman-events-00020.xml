@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <soap:Header>Header</soap:Header>
+  <soap:Body>
+    <wsnt:Notify>
+      <wsnt:NotificationMessage>
+        <wsnt:Topic>ALERT.MLSensor.MailNew</wsnt:Topic>
+        <wsnt:ProducerReference>
+          <wsa:Address>http://www.alert-project.eu/MLSensor</wsa:Address>
+        </wsnt:ProducerReference>
+        <wsnt:Message>
+          <ns1:event xmlns:ns1="http://www.alert-project.eu/" xmlns:o="http://www.alert-project.eu/ontoevents-mdservice" xmlns:r="http://www.alert-project.eu/rawevents-forum" xmlns:r1="http://www.alert-project.eu/rawevents-mailinglist" xmlns:r2="http://www.alert-project.eu/rawevents-wiki" xmlns:s="http://www.alert-project.eu/strevents-kesi" xmlns:sm="http://www.alert-project.eu/stardom" xmlns:s1="http://www.alert-project.eu/strevents-keui" xmlns:sc="http://www.alert-project.eu/socrates" xmlns:p="http://www.alert-project.eu/panteon" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.alert-project.eu/alert-root.xsd"  >
+            <ns1:head>
+              <ns1:sender>MLSensor</ns1:sender>
+              <ns1:timestamp>1348472809986</ns1:timestamp>
+              <ns1:sequencenumber>19</ns1:sequencenumber>
+            </ns1:head>
+            <ns1:payload>
+              <ns1:meta>
+                <ns1:startTime>1348472809986</ns1:startTime>
+                <ns1:endTime>1348472809988</ns1:endTime>
+                <ns1:eventName>ALERT.MLSensor.MailNew</ns1:eventName>
+                <ns1:eventId>19</ns1:eventId>
+                <ns1:eventType>Request</ns1:eventType>
+              </ns1:meta>
+              <ns1:eventData>
+                <r1:message>
+                  <r1:from><![CDATA[sanderant at gmail.com (Alexander Antoniades)]]></r1:from>
+                  <r1:date>Sun, 08 Jan 2006 04:37:59 +0200</r1:date>
+                  <r1:subject><![CDATA[[Kde-hardware-devel] KDE (Linux hardware) issues]]></r1:subject>
+                  <r1:content><![CDATA[It seems that the first priority of solid should be informational.  The
+device manager that you're describing would be better suited as a "helper
+application."  Or a front end that is capable of accessing the knowledge
+base and downloading and/or compiling drivers as needed.  This would be in
+keeping with the tried and true *nix mantra of do one thing really well.  A
+device manager would be an appropriate application to be released with
+kde4.  It all depends on how ambitious we're willing to be.
+I believe your second point is very valid.  Mostly as a courtesy to the user
+more or less to update that system so it knows what's installed and what
+isn't.  This again would be a priority of the device manager application.
+I don't really understand what you're getting at in your third point.
+Transferring hard drives to another system?
+A live CD needs to be a future goal of the project.  I, however, see a very
+limited use for it.  Most of what the knowledge base is all about is what
+driver combination to use to get a device working "as advertised."  That
+takes trial and error and usually some google'ing.  Most of my time spend
+getting devices to work is not spent coding.  In fact, I don't believe my
+coding knowledge really helps me at all.
+Judging by the pace of previous KDE system development I feel that having
+narrowly focused goals and sticking to them will make the biggest
+contribution to KDE and foster the greatest amount of adoption.
+Well that's what I think.  Feel free to disagree.
+Chris
+
+
+
+On 1/8/06, Alexander Antoniades <sanderant at gmail.com> wrote:
+>
+> Hi all, you asked for input so I thought I'd put in my 0.02$ as requested
+> on
+> the announcement. I'd just like to put out a couple of ideas/questions on
+> the
+> offhand chance you haven't thought of them (doubtful, but you never know).
+> :)
+>
+> 1) The biggest problem with most of the hardware interaction issues with
+> Linux
+> is that projects like HAL Device Manager is that they offer information,
+> but
+> no way to rectify the problem. I know that Hal Device Manager was made
+> that
+> way by design, but this makes it relatively useless, so the first issue is
+> I
+> hope any type of device manager style applications provide a way to
+> actually
+> change or rectify hardware problems as opposed to simply stating what the
+> system sees.
+> From my experience having to deal with that OS that runs on 90% of the
+> worlds
+> computers everyday, the main use of a device manager style application is
+> to
+> see if the OS sees the right hardware and to sometimes change drivers in
+> the
+> case of mis-identification, or drop to a generic driver in the case of a
+> driver not working correctly.
+> This is my main shortcoming with Linux these days and would go a long way
+> to
+> help those of us who try to evangelize and expand Linux's base.
+>
+> 2) What about integration with any existing projects? In particular I was
+> thinking about Ubuntu's hardware database and YaST. I know YaST is a whole
+> backend, but components like SAX2 are GPL and seem like they would go a
+> long
+> way towards making X (which I assume would be a necessary prerequisite to
+> KDE
+> on all platforms) easier to manage.
+>
+> 3) One more wish (which isn't done by any OS I know of) would be the
+> ability
+> to show all the drivers the currently installed KDE system. This would
+> help
+> for in the event of moving the hard drive to another system or switching
+> out
+> hardware the ability to anticipate the difficulty of any change or when
+> making upgrade decisions.
+>
+> 4) Lastly, for those of us that don't have programming skills, but have
+> access
+> to a wide array of hardware I would suggest you plan on releasing live CDs
+> to
+> help us assist in any hardware information gathering as I'm sure you'll
+> get
+> as much information as you can handle that way.
+>
+> I realize these are generally pretty obvious, but I wanted to make sure I
+> offered them up for you since the project is just starting.
+>
+> Thank you for addressing this weakness in KDE and I look forward to your
+> progress!
+>
+> Sander
+> _______________________________________________
+> Kde-hardware-devel mailing list
+> Kde-hardware-devel at kde.org
+> https://mail.kde.org/mailman/listinfo/kde-hardware-devel
+>
+]]></r1:content>
+                </r1:message>
+              </ns1:eventData>
+            </ns1:payload>
+          </ns1:event>
+        </wsnt:Message>
+      </wsnt:NotificationMessage>
+    </wsnt:Notify>
+  </soap:Body>
+</soap:Envelope>
