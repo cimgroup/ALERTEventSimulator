@@ -400,6 +400,7 @@ public class EventSimulator extends javax.swing.JFrame {
         Constants.sEventTypes.add(Constants.c_ET_ALERT_UI_APICallRequest);
         Constants.sEventTypes.add(Constants.c_ET_ALERT_UI_Recommender_IdentitiesRecommendationRequest);
         Constants.sEventTypes.add(Constants.c_ET_ALERT_UI_Recommender_IssueRecommendationRequest);
+        Constants.sEventTypes.add(Constants.c_ET_ALERT_UI_Recommender_ModuleRecommendationRequest);
         
         for(int i = 0; i < Constants.sEventTypes.size(); i++)
         {
@@ -644,6 +645,10 @@ public class EventSimulator extends javax.swing.JFrame {
         {
             sXML = SimulateIssueRecommendationRequest();
         }
+        else if (sEventType.equals(Constants.c_ET_ALERT_UI_Recommender_ModuleRecommendationRequest))
+        {
+            sXML = SimulateModuleRecommendationRequest();
+        }
         return sXML;
     }
     
@@ -774,6 +779,16 @@ public class EventSimulator extends javax.swing.JFrame {
     public String SimulateIssueRecommendationRequest() throws ParserConfigurationException, SAXException, IOException
     {
         String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_IssueRecommendationRequest);
+        
+        sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
+        String sEventID = UUID.randomUUID().toString();
+        sFileEvent = InsertTagAfterTag(sFileEvent, "ns1:eventId", sEventID, "ns1:meta");
+        return sFileEvent;
+    }
+    
+    public String SimulateModuleRecommendationRequest() throws ParserConfigurationException, SAXException, IOException
+    {
+        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_ModuleRecommendationRequest);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();

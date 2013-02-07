@@ -28,5 +28,7 @@ public class Constants {
     public static String c_ET_ALERT_UI_KEUIRequest = "ALERT.UI.KEUIRequest";
     public static String c_ET_ALERT_UI_Recommender_IdentitiesRecommendationRequest = "ALERT.UI.Recommender.IdentitiesRecommendationRequest";
     public static String c_ET_ALERT_UI_Recommender_IssueRecommendationRequest = "ALERT.UI.Recommender.IssueRecommendationRequest";
+    public static String c_ET_ALERT_UI_Recommender_ModuleRecommendationRequest = "ALERT.UI.Recommender.ModuleRecommendationRequest";
+
 
 }
