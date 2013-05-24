@@ -654,7 +654,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateIssueNew() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_KESI_IssueNew);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_KESI_IssueNew);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -668,7 +668,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateIssueUpdate() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_KESI_IssueUpdate);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_KESI_IssueUpdate);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -682,7 +682,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateCommitNew() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_KESI_CommitNew);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_KESI_CommitNew);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -692,7 +692,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateForumPostNew() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_ForumSensor_ForumPostNew);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_ForumSensor_ForumPostNew);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -706,7 +706,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateMailNew() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_MLSensor_MailNew);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_MLSensor_MailNew);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -720,7 +720,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateArticleAdded() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_WikiSensor_ArticleAdded);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_WikiSensor_ArticleAdded);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -734,7 +734,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateArticleModified() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_WikiSensor_ArticleModified);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_WikiSensor_ArticleModified);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -748,7 +748,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateAPICallRequest() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_APICallRequest);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_UI_APICallRequest);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -758,7 +758,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateKEUIRequest() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_KEUIRequest);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_UI_KEUIRequest);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -768,7 +768,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateIdentitiesRecommendationRequest() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_IdentitiesRecommendationRequest);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_IdentitiesRecommendationRequest);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -778,7 +778,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateIssueRecommendationRequest() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_IssueRecommendationRequest);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_IssueRecommendationRequest);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
@@ -788,7 +788,7 @@ public class EventSimulator extends javax.swing.JFrame {
     
     public String SimulateModuleRecommendationRequest() throws ParserConfigurationException, SAXException, IOException
     {
-        String sFileEvent = GetRandomFileFromFolder("EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_ModuleRecommendationRequest);
+        String sFileEvent = GetRandomFileFromFolder(OSValidator.GetAppPath() + "/EventSamples/" + Constants.c_ET_ALERT_UI_Recommender_ModuleRecommendationRequest);
         
         sFileEvent = DeleteTag(sFileEvent, "ns1:eventId");
         String sEventID = UUID.randomUUID().toString();
