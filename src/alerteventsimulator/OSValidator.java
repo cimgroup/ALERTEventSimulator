@@ -90,7 +90,7 @@ public class OSValidator {
                 sPath = System.getProperty("user.dir");
             }
             else if (OSValidator.isUnix()) {
-                sPath = Installer.class.getResource(Installer.class.getSimpleName() + ".class").toURI().toString();
+                sPath = EventSimulator.class.getResource(EventSimulator.class.getSimpleName() + ".class").toURI().toString();
                 if (sPath != null && !sPath.isEmpty()) {
                     String [] sTemp = sPath.replace("\\", "/").split("!");
                     if (sTemp.length > 0) sPath = sTemp[0];
